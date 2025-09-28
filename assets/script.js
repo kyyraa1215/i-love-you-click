@@ -1,6 +1,6 @@
 // Tiny helper: read query params
 const params = new URLSearchParams(location.search);
-const who = params.get('to') || params.get('name') || 'kamu';
+const who = params.get('to') || params.get('name') || 'ゆきな';
 const perClick = Math.min(Math.max(parseInt(params.get('count') || '80', 10), 1), 500);
 const text = (params.get('text') || 'i love you ❤️').trim();
 
