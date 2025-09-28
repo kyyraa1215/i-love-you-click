@@ -1,0 +1,101 @@
+/* Cute minimal style */
+:root{
+  --bg: radial-gradient(1200px 800px at 10% -10%, #fff 0, #fef3f2 35%, #fde2e1 55%, #fff 100%);
+  --text:#1f2937;
+  --muted:#6b7280;
+  --accent:#ef4444;
+  --chip:#ffffffcc;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, Noto Sans, sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.5;
+}
+
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px 80px;
+}
+
+.title{
+  font-size:clamp(28px, 3vw + 14px, 52px);
+  margin:0 0 10px;
+  letter-spacing:.5px;
+}
+
+.lead{
+  font-size:clamp(16px, 1vw + 12px, 22px);
+  color:var(--muted);
+  margin:0 0 20px;
+}
+
+.btn{
+  display:inline-block;
+  margin-left:10px;
+  padding:10px 16px;
+  border-radius:999px;
+  background:#fff;
+  color:#ef4444;
+  text-decoration:none;
+  box-shadow:var(--shadow);
+  font-weight:700;
+  transition: transform .08s ease, box-shadow .2s ease;
+}
+.btn:hover{ transform: translateY(-1px) scale(1.02) }
+.btn:active{ transform: translateY(1px) scale(.98) }
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
+  gap:12px;
+  margin-top:24px;
+}
+.chip{
+  background:var(--chip);
+  border-radius:16px;
+  padding:12px 14px;
+  text-align:center;
+  backdrop-filter: blur(6px);
+  box-shadow:var(--shadow);
+  user-select:none;
+}
+
+.foot{
+  margin-top:32px;
+  color:var(--muted);
+  font-size:14px;
+}
+.hint code{background:#fff;border-radius:6px;padding:2px 6px;box-shadow:var(--shadow)}
+
+/* Floating hearts layer */
+#hearts{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+.heart{
+  position:absolute;
+  font-size:24px;
+  will-change: transform, opacity;
+  animation: floatUp var(--dur) linear forwards;
+  filter: drop-shadow(0 6px 8px rgba(0,0,0,.15));
+}
+@keyframes floatUp{
+  0%{ transform: translate(var(--x,0), var(--y,0)) scale(.9) rotate(0); opacity: 0 }
+  10%{ opacity: 1 }
+  100%{ transform: translate(var(--x,0), calc(var(--y,0) - 120vh)) scale(1.2) rotate(360deg); opacity: 0 }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .heart{ animation-duration: 2s }
+  .btn{ transition:none }
+}
